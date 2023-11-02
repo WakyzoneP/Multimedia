@@ -16,6 +16,7 @@ window.onload = () => {
     });
 
     const addButton = document.getElementById("add_button");
+    
 
     addButton.onclick = () => {
         const subject = document.getElementById("subject_select").value;
