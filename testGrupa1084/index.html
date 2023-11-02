@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style type="text/css">
+            #content_view {
+                display: flex;
+                flex-direction: column;
+                max-width: 24rem;
+                margin: auto;
+                margin-top: 20rem;
+                gap: 2rem;
+            }
+        </style>
+        <script type="text/javascript">
+            console.log("test");
+
+            function insertIntoList(exam) {
+                const listElement = document.getElementById("grade_list");
+                const element = document.createElement("li");
+                const text = document.createTextNode(exam.subject + " - " + exam.grade);
+                if (exam.grade < 5) element.style.color = "red";
+                element.style.marginTop = "1rem";
+                element.appendChild(text);
+                listElement.appendChild(element);
+            }
+
+            window.onload = () => {
+
+                insertIntoList({
+                    subject: "Java",
+                    grade: 4,
+                });
+
+                const button = document.getElementById("add_button");
+
+                button.onclick = () => {
+                    const subject = document.getElementById("subject_select").value;
+                    const grade = document.getElementById("grade_input").value;
+                    insertIntoList({
+                        subject: subject,
+                        grade: grade,
+                    });
+                };
+
+                document.addEventListener("click", (event) => {
+                    if (event.target.tagName === "LI") {
+                        event.target.remove();
+                    }
+                });
+            };
+        </script>
+    </head>
+    <body>
+        <div id="content_view">
+            <select id="subject_select">
+                <option>Multimedia</option>
+                <option>Java</option>
+                <option>POO</option>
+            </select>
+            <input type="text" id="grade_input" />
+            <button id="add_button">Adauga</button>
+            <ul id="grade_list"></ul>
+        </div>
+    </body>
+</html>
